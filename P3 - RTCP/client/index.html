@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Real-time Chat Application</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="logo">💬</div>
+          <div class="title">Chat Application by SA</div>
+        </div>
+
+        <div class="usercard">
+          <div class="avatar" id="user-avatar">A</div>
+          <div class="meta">
+            <div class="username" id="user-name">anon</div>
+            <button id="change-name" class="link">Change name</button>
+          </div>
+        </div>
+
+        <div class="Chats">
+          <div class="section-title">CHATS</div>
+          <ul id="room-list" class="room-list"></ul>
+          <form id="new-room-form" class="new-room">
+            <input id="new-room-input" placeholder="Create/Join" />
+            <button type="submit">Go</button>
+          </form>
+        </div>
+      </aside>
+
+      <main class="chat">
+        <header class="chat-header">
+          <div class="room-chip" id="room-chip">Lobby</div>
+          <div class="presence">
+            <span class="dot"></span>
+            <span id="presence-count">0 online</span>
+          </div>
+        </header>
+
+        <ul id="messages" class="messages"></ul>
+
+        <form id="message-form" class="composer" autocomplete="off">
+          <input id="message-input" placeholder="Type a message and hit Enter" />
+          <button type="submit">Send</button>
+        </form>
+      </main>
+    </div>
+
+    <!-- Name modal -->
+    <dialog id="name-modal" class="modal">
+      <form method="dialog" id="name-form" class="modal-card">
+        <h3>Choose a display name</h3>
+        <input id="name-input" placeholder="e.g. Alex" autofocus />
+        <div class="actions">
+          <button value="cancel" class="ghost">Cancel</button>
+          <button id="name-save" value="default">Save</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>
